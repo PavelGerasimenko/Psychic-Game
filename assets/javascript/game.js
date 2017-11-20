@@ -1,4 +1,4 @@
-var compChoice = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+var computerChoices = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
 var wins = 0;
 var losses = 0;
@@ -7,7 +7,7 @@ var guessesLeft = 9;
 var guessedLetters = [];
 var letterToGuess = null;
 
-var compGuess = compChoice[Math.floor(Math.random() * compChoice.length)];
+var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
 var updateGuessesLeft = function() {
 
@@ -15,11 +15,11 @@ var updateGuessesLeft = function() {
 };
 
 var updateLetterToGuess = function() {
-  this.letterToGuess = this.compChoice[Math.floor(Math.random() * this.compChoice.length)];
+  this.letterToGuess = this.computerChoices[Math.floor(Math.random() * this.computerChoices.length)];
 };
 var updateGuessesSoFar = function() {
 
-  document.querySelector('#let').innerHTML = "Your Guesses so far:" + guessedLetters.join(', ');
+  document.querySelector('#let').innerHTML = "Your Guesses so far: " + guessedLetters.join(', ');
 };
 
 var reset = function() {
@@ -44,16 +44,16 @@ document.onkeyup = function(event) {
   updateGuessesSoFar();
 
   if (guessesLeft > 0){
-    if (userGuess == letterToGuess){
-        wins++;
-        document.querySelector('#wins').innerHTML = "Wins: " + wins;
-        alert("Yes, you are psychic!");
-        reset();
-    }
-    }else if(guessesLeft == 0){
-        losses++;
-        document.querySelector('#losses').innerHTML = "Losses: " + losses;
-        alert("Sorry, you're not psychic, maybe try again?");
-        reset();
-    }
+      if (userGuess == letterToGuess){
+          wins++;
+          document.querySelector('#wins').innerHTML = "Wins: " + wins;
+          alert("Yes, you are psychic!");
+          reset();
+      }
+  }else if(guessesLeft == 0){
+      losses++;
+      document.querySelector('#losses').innerHTML = "Losses: " + losses;
+      alert("Sorry, you're not psychic, maybe try again?");
+      reset();
+  }
 };
